@@ -10,8 +10,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ *all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -27,45 +27,32 @@
 #include <QFile>
 #include <QObject>
 
-namespace util
-{
+namespace util {
 
 static TipFunction tipFunction;
 
-void setTipFunction(TipFunction f)
-{
-    tipFunction = f;
+void setTipFunction(TipFunction f) { tipFunction = f; }
+
+void showTip(const QString &s) {
+  if (tipFunction) {
+    tipFunction(s);
+  }
 }
 
-void showTip(const QString &s)
-{
-    if (tipFunction)
-    {
-        tipFunction(s);
+QImage loadImage(const QString &path) {
+  QImage img;
+  if (!QFile::exists(path)) {
+    util::showTip(QObject::tr("Invalid path: ") + path);
+  } else {
+    img = QImage(path);
+    if (img.format() == QImage::Format_Invalid) {
+      util::showTip(QObject::tr("Invalid image"));
+    } else {
+      util::showTip(QObject::tr("Open succeeded: ") + path);
     }
+  }
+
+  return img;
 }
 
-QImage loadImage(const QString &path)
-{
-    QImage img;
-    if (!QFile::exists(path))
-    {
-        util::showTip(QObject::tr("Invalid path: ") + path);
-    }
-    else
-    {
-        img = QImage(path);
-        if (img.format() == QImage::Format_Invalid)
-        {
-            util::showTip(QObject::tr("Invalid image"));
-        }
-        else
-        {
-            util::showTip(QObject::tr("Open succeeded: ") + path);
-        }
-    }
-
-    return img;
-}
-
-}
+}  // namespace util

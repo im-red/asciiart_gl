@@ -10,8 +10,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ *all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -25,32 +25,32 @@
 #pragma once
 
 #include <QMainWindow>
-
 #include <set>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+class MainWindow;
+}
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
+  Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+ public:
+  MainWindow(QWidget *parent = nullptr);
+  ~MainWindow();
 
-    QImage generateAsciiImage();
-    QImage generateAsciiImage(const std::set<QChar> &chars, const QFont &font);
+  QImage generateAsciiImage();
+  QImage generateAsciiImage(const std::set<QChar> &chars, const QFont &font);
 
-private slots:
-    void on_allButton_clicked();
-    void on_numberButton_clicked();
-    void on_letterButton_clicked();
-    void on_okButton_clicked();
-    void on_openButton_clicked();
+ private slots:
+  void on_allButton_clicked();
+  void on_numberButton_clicked();
+  void on_letterButton_clicked();
+  void on_okButton_clicked();
+  void on_openButton_clicked();
 
-private:
-    Ui::MainWindow *ui;
-    QImage m_image;
+ private:
+  Ui::MainWindow *ui;
+  QImage m_image;
 };

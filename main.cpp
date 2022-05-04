@@ -10,8 +10,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ *all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -22,16 +22,17 @@
  * SOFTWARE.
  ********************************************************************************/
 
-#include "mainwindow.h"
-
 #include <QApplication>
 
-int main(int argc, char *argv[])
-{
-    qSetMessagePattern("%{time yyyy-MM-dd h:mm:ss.zzz} [%{type}] (%{file}:%{line}) %{function} - %{message}");
+#include "mainwindow.h"
 
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
+int main(int argc, char *argv[]) {
+  qSetMessagePattern(
+      "%{time yyyy-MM-dd h:mm:ss.zzz} [%{type}] (%{file}:%{line}) %{function} "
+      "- %{message}");
+
+  QApplication a(argc, argv);
+  MainWindow w;
+  w.show();
+  return a.exec();
 }
